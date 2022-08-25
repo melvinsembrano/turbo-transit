@@ -1,0 +1,14 @@
+<%= turbo_frame_tag 'messages' do %>
+
+  <div class="flex-grow bg-white p-5 border border-gray-100">
+
+    <ul role="list" class="divide-y divide-gray-200">
+      <%= render @messages %>
+    </ul>
+
+  </div>
+  <div class="bg-white p-5 border border-gray-100 mt-1">
+    <%= render "form", message: @channel.messages.build %>
+  </div>
+
+<% end %>

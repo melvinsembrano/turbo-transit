@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title>TurboTransit</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="h-full">
+    <main class="flex h-full">
+        <div class="flex-col w-64">
+          <!-- This example requires Tailwind CSS v2.0+ -->
+          <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto h-full">
+            <div class="flex items-center flex-shrink-0 px-4">
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="Workflow">
+            </div>
+            <div class="mt-5 flex-grow flex flex-col">
+              <nav class="flex-1 px-2 bg-white space-y-1" aria-label="Sidebar">
+
+                <% @channels.each do |channel| %>
+                  <%= render partial: "channels/list_item", locals: { active_channel: @channel, channel: channel } %>
+                <% end %>
+
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="flex-col flex-grow p-3">
+          <%= yield %>
+        </div>
+    </main>
+  </body>
+</html>
